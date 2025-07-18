@@ -1,5 +1,7 @@
 package ru.netology.data
 
+import ru.netology.attachments.Attachment
+
 data class Post(
     val id: Int,                       // Идентификатор записи
     val ownerId: Int,                  // Идентификатор владельца стены
@@ -13,5 +15,6 @@ data class Post(
     val friendsOnly: Boolean = false,  // Опция «Только для друзей»
     val canPin: Boolean = false,       // Закрепить запись
     val canDelete: Boolean = false,    // Удалить запись
-    val canEdit: Boolean = false       // Редактировать запись
+    val canEdit: Boolean = false,       // Редактировать запись
+    val attachment: Array<Attachment> = emptyArray()  // Медиавложения
 )
