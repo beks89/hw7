@@ -16,5 +16,5 @@ data class Post(
     val canPin: Boolean = false,       // Закрепить запись
     val canDelete: Boolean = false,    // Удалить запись
     val canEdit: Boolean = false,       // Редактировать запись
-    val attachment: Array<Attachment> = emptyArray()  // Медиавложения
+    val attachment: Array<Attachment> = emptyArray(), // Медиавложения
 )

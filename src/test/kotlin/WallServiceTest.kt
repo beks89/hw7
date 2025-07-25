@@ -1,10 +1,8 @@
 import junit.framework.TestCase.*
 import org.junit.Before
 import org.junit.Test
-import ru.netology.data.Comments
-import ru.netology.data.Likes
-import ru.netology.data.Post
-import ru.netology.data.WallService
+import ru.netology.data.*
+import ru.netology.exceptions.PostNotFoundException
 
 
 class WallServiceTest {
@@ -12,6 +10,27 @@ class WallServiceTest {
     @Before
     fun clearBeforeTest() {
         WallService.clear()
+    }
+
+    @Test
+    fun  createCommentPostIdTest() {
+        val wall = WallService
+        val post = Post(
+            7, 15, 11, 18, "Check",
+            comments = Comments(7),
+            likes = Likes(50)
+        )
+        wall.add(post)
+        val comment = Comment(5, 5, 14578, "You're right")
+        wall.createComment(1, comment)
+        assertEquals(1, wall.createComment(1, comment).comToPost)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
+        val wall = WallService
+        val comment = Comment(1, 5, 14578, "Check exception", comToPost = 0)
+        wall.createComment(1, comment)
     }
 
     @Test
